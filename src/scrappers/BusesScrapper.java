@@ -13,6 +13,7 @@ import com.jaunt.Element;
 import com.jaunt.Elements;
 import com.jaunt.NotFound;
 import com.jaunt.UserAgent;
+import other.Utils;
 
 public class BusesScrapper implements Scrapper<List<Bus>> {
 
@@ -61,8 +62,8 @@ public class BusesScrapper implements Scrapper<List<Bus>> {
                     String name = nameElement.getElement(0).innerText();
                     String route = routeElement.getElement(0).innerText();
                     if (nameElement.getElement(0).hasAttribute("href")) {
-                        String link = nameElement.getElement(0).getAt("href");
-                        buses.add(new Bus(name, route, busType, link));
+                        String number = name.substring(name.indexOf(" ") + 1);
+                        buses.add(new Bus(name, route, busType, number));
                     }
                 }
             }
