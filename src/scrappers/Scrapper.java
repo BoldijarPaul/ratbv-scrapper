@@ -2,5 +2,5 @@ package scrappers;
 
 public interface Scrapper<Type> {
 
-	Type fetch() throws Exception;
+    Type fetch() throws Exception;
 }
