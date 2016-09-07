@@ -60,7 +60,10 @@ public class BusesScrapper implements Scrapper<List<Bus>> {
                 if (nameElement.size() == 1 && routeElement.size() == 1) {
                     String name = nameElement.getElement(0).innerText();
                     String route = routeElement.getElement(0).innerText();
-                    buses.add(new Bus(name, route, busType));
+                    if (nameElement.getElement(0).hasAttribute("href")) {
+                        String link = nameElement.getElement(0).getAt("href");
+                        buses.add(new Bus(name, route, busType, link));
+                    }
                 }
             }
         }
