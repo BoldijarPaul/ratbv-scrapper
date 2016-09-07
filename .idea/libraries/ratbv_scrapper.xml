@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="ratbv-scrapper">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/gson-1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jaunt1.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
