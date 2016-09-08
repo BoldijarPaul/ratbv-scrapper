@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.jaunt.Element;
 import com.jaunt.ResponseException;
 import com.jaunt.UserAgent;
+import models.Bus;
 import models.Schedule;
 
 import java.util.*;
@@ -17,7 +18,7 @@ public class ScheduleScrapper implements Scrapper<Schedule> {
     private final UserAgent userAgent;
 
     public ScheduleScrapper(String url) throws Exception {
-        this.url = url.toLowerCase();
+        this.url = url;
         userAgent = new UserAgent();
         userAgent.visit(this.url);
     }
@@ -59,6 +60,15 @@ public class ScheduleScrapper implements Scrapper<Schedule> {
     }
 
     public static void main(String[] args) throws Exception {
-        System.out.println(new Gson().toJson(new ScheduleScrapper("http://ratbv.ro/afisaje/14-intors/line_14_1_cl1_ro.html").fetch()));
+        BusesScrapper busesScrapper = new BusesScrapper();
+        List<Bus> buses = busesScrapper.fetch();
+        for (Bus bus : buses) {
+
+            String linkTourUrl = new BusesUrlListScrapper(bus.linkTour).fetch();
+            String linkRetourUrl = new BusesUrlListScrapper(bus.linkRetour).fetch();
+            new BusScrapper(linkTourUrl).fetch();
+            new BusScrapper(linkRetourUrl).fetch();
+            System.out.println();
+        }
     }
 }

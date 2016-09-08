@@ -6,6 +6,7 @@ package models;
 public class BusStop {
     public String name;
     public String url;
+    public Schedule schedule;
 
     public BusStop(String name, String url) {
         this.name = name;

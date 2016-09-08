@@ -12,7 +12,7 @@ public class BusesUrlListScrapper implements Scrapper<String> {
     private final UserAgent userAgent;
 
     public BusesUrlListScrapper(String url) throws Exception {
-        this.url = url.toLowerCase();
+        this.url = url;
         userAgent = new UserAgent();
         userAgent.visit(this.url);
     }

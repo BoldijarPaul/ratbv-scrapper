@@ -11,7 +11,10 @@ public class BusesFirstUrlScrapper implements Scrapper<String> {
     private final UserAgent userAgent;
 
     public BusesFirstUrlScrapper(String url) throws Exception {
-        this.url = url.toLowerCase();
+        if (url.contains("afisaje")) {
+            url = url.toLowerCase();
+        }
+        this.url = url;
         userAgent = new UserAgent();
         userAgent.visit(this.url);
     }

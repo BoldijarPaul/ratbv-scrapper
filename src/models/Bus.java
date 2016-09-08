@@ -1,5 +1,7 @@
 package models;
 
+import java.util.List;
+
 public class Bus {
     public String name;
     public String route;
@@ -8,10 +10,8 @@ public class Bus {
     public String linkTour;
     public String linkRetour;
 
-    public Bus() {
-        linkTour = "http://ratbv.ro/afisaje/" + number.toLowerCase() + "-dus.html";
-        linkRetour = "http://ratbv.ro/afisaje/" + number.toLowerCase() + "-intors.html";
-    }
+    public List<BusStop> tourStops;
+    public List<BusStop> retourStops;
 
     public Bus(String name, String route, String busType, String number) {
         this.name = name;
